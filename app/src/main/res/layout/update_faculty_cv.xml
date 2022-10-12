@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="8dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1.5"
+            android:layout_margin="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:textSize="15sp"
+                android:id="@+id/facultyNameRV"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:textSize="15sp"
+                android:id="@+id/facultyEmailRV"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Post"
+                android:textSize="15sp"
+                android:id="@+id/facultyPostRV"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update Info"
+                android:id="@+id/btnFacultyUpdateInfoRV"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:layout_gravity="center"
+            android:src="@drawable/avtar"
+            android:id="@+id/facultyImage"/>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
