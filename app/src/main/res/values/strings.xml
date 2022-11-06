@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AdminApp</string>
+    <string name="hello_what_you_want_to_do">Hello, What you want to do ?</string>
 </resources>

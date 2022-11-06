@@ -17,6 +17,22 @@
         android:theme="@style/Theme.AdminApp"
         tools:targetApi="31">
         <activity
+            android:name=".attendance.AttendanceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".loginScreen.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true"
+            android:theme="@style/Theme.AdminApp_Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".DeleteNoticeActivity"
             android:exported="false" />
         <activity
@@ -39,13 +55,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>

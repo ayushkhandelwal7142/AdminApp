@@ -5,8 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     tools:context=".MainActivity">
+
+    <include layout="@layout/app_bar" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_what_you_want_to_do"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:textColor="@color/splash_screen"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="40dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,9 +27,47 @@
         android:layout_margin="5dp">
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/takeAttendance"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_weight="0.5"
+            style="@style/Widget.Material3.CardView.Elevated"
+            app:cardBackgroundColor="@color/light_blue"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/circle_blue"
+                    android:src="@drawable/ic_attendance"
+                    android:padding="10dp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/light_gray"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:id="@+id/txtAttendance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Take Attendance"
+                    android:textStyle="bold"
+                    android:padding="5dp"
+                    android:layout_marginTop="10dp"/>
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/addNotice"
-            android:layout_width="150dp"
-            android:layout_height="130dp"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_weight="0.5"
             style="@style/Widget.Material3.CardView.Elevated"
             app:cardBackgroundColor="@color/light_blue"
             android:layout_margin="10dp">
@@ -51,11 +100,21 @@
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_margin="5dp">
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/uploadGalleryImage"
             style="@style/Widget.Material3.CardView.Elevated"
-            android:layout_width="150dp"
-            android:layout_height="130dp"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_weight="0.5"
             app:cardBackgroundColor="@color/light_blue"
             android:layout_margin="10dp">
 
@@ -86,20 +145,13 @@
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_margin="5dp">
-
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/uploadEbook"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_weight="0.5"
             style="@style/Widget.Material3.CardView.Elevated"
             app:cardBackgroundColor="@color/light_blue"
-            android:layout_height="130dp"
             android:layout_margin="10dp">
 
             <LinearLayout
@@ -111,7 +163,7 @@
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:background="@drawable/circle_blue"
+                    android:background="@drawable/circle_yellow"
                     android:src="@drawable/ic_upload"
                     android:padding="10dp"/>
                 <View
@@ -129,10 +181,20 @@
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_margin="5dp">
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/updateFaculty"
-            android:layout_width="150dp"
-            android:layout_height="130dp"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_weight="0.5"
             style="@style/Widget.Material3.CardView.Elevated"
             app:cardBackgroundColor="@color/light_blue"
             android:layout_margin="10dp">
@@ -164,18 +226,11 @@
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_margin="5dp">
-
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/deleteNotice"
-            android:layout_width="150dp"
-            android:layout_height="130dp"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="150dp"
             style="@style/Widget.Material3.CardView.Elevated"
             app:cardBackgroundColor="@color/light_blue"
             android:layout_margin="10dp">
