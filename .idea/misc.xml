@@ -7,9 +7,11 @@
         <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/drawable-v24/circle_blue.xml" value="0.2265" />
         <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/drawable-v24/circle_green.xml" value="0.2265" />
         <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/drawable-v24/circle_pink.xml" value="0.2265" />
+        <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/drawable-v24/circle_yellow.xml" value="0.237" />
         <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/drawable-v24/ic_wave.xml" value="0.237" />
         <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/drawable/btn_primary.xml" value="0.237" />
         <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/layout/activity_add_new_faculty.xml" value="0.22826086956521738" />
+        <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/layout/activity_add_new_student.xml" value="0.25416666666666665" />
         <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/layout/activity_attendance.xml" value="0.25416666666666665" />
         <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/layout/activity_delete_notice.xml" value="0.25416666666666665" />
         <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/layout/activity_login_actiity.xml" value="0.25416666666666665" />
@@ -20,10 +22,14 @@
         <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/layout/activity_upload_image.xml" value="0.22826086956521738" />
         <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/layout/activity_upload_notice.xml" value="0.22826086956521738" />
         <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/layout/activity_upload_pdf.xml" value="0.22826086956521738" />
+        <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/layout/add_new_student_dialog_layout.xml" value="0.253125" />
         <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/layout/app_bar.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/layout/attendance_tool_bar.xml" value="0.25416666666666665" />
+        <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/layout/attendence_list.xml" value="0.20854700854700856" />
         <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/layout/delete_notice.xml" value="0.25416666666666665" />
         <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/layout/no_data_available.xml" value="0.22826086956521738" />
         <entry key="..\:/Ayush/A K Studios/SchoolApp/AdminApp/app/src/main/res/layout/update_faculty_cv.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/cw/AppData/Local/Android/Sdk/platforms/android-32/data/res/drawable/btn_dropdown.xml" value="0.2595" />
       </map>
     </option>
   </component>

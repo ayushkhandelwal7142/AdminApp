@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.akstudios.adminapp.MainActivity
 import com.akstudios.adminapp.R
@@ -14,6 +15,7 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var btnLogin: Button
+    private lateinit var btnSignUp: TextView
     private lateinit var etEmailAddress: EditText
     private lateinit var etPassword: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,9 +26,13 @@ class LoginActivity : AppCompatActivity() {
         btnLogin = findViewById(R.id.btnLogin)
         etEmailAddress = findViewById(R.id.etEmailAddress)
         etPassword = findViewById(R.id.etPassword)
+        btnSignUp = findViewById(R.id.btnSignUp)
 
         btnLogin.setOnClickListener {
             login()
+        }
+        btnSignUp.setOnClickListener {
+            Toast.makeText(this, "Please contact App Developer for login credentials", Toast.LENGTH_LONG).show()
         }
     }
 

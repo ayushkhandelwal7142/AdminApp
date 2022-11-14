@@ -39,7 +39,7 @@ class UploadImageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_upload_image)
 
-        items = arrayListOf("Select Category", "Independence Day", "Republic Day", "Other Events")
+        items = arrayListOf("Select Category", "Annual Function", "Independence Day", "Republic Day", "Other Events")
         databaseReference = FirebaseDatabase.getInstance().reference.child("Gallery Images")
         storageReference = FirebaseStorage.getInstance().reference.child("Gallery Images")
         progressDialog = ProgressDialog(this)

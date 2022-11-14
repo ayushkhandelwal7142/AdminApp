@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.akstudios.adminapp.dataClasses.NoticeData
@@ -21,6 +22,9 @@ class NoticeAdapter(val list: ArrayList<NoticeData>, val context: Context) :
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val noticeImage = itemView.findViewById<ImageView>(R.id.deleteNoticeImage)
         val btnDeleteNotice = itemView.findViewById<Button>(R.id.btnDeleteNotice)
+        val noticeTitle = itemView.findViewById<TextView>(R.id.noticeTitle)
+        val noticeDate = itemView.findViewById<TextView>(R.id.noticeDate)
+        val noticeTime = itemView.findViewById<TextView>(R.id.noticeTime)
 
     }
 
@@ -31,6 +35,9 @@ class NoticeAdapter(val list: ArrayList<NoticeData>, val context: Context) :
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        holder.noticeDate.text = list[position].date
+        holder.noticeTime.text = list[position].time
+        holder.noticeTitle.text = list[position].title
         Glide.with(context).load(list[position].imageUrl).into(holder.noticeImage)
         holder.btnDeleteNotice.setOnClickListener {
             val builder = AlertDialog.Builder(context)
