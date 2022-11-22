@@ -27,8 +27,7 @@
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
-            android:exported="true"
-            android:theme="@style/Theme.AdminApp_Splash"></activity>
+            android:exported="false" />
         <activity
             android:name=".DeleteNoticeActivity"
             android:exported="false" />

@@ -14,6 +14,7 @@ import android.widget.Toast
 import com.akstudios.adminapp.R
 import com.akstudios.adminapp.dataClasses.GalleryImageData
 import com.akstudios.adminapp.databinding.ActivityAddNewFacultyBinding
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -99,17 +100,19 @@ class AddNewFacultyActivity : AppCompatActivity() {
             val finalImage = baos.toByteArray()
             val filePath = storageReference.child(selectedCategory).child("$finalImage jpeg")
             val uploadTask: UploadTask = filePath.putBytes(finalImage)
-            uploadTask.addOnCompleteListener {
+            uploadTask.addOnCompleteListener (this@AddNewFacultyActivity, OnCompleteListener {
                 if (it.isSuccessful) {
                     uploadTask.addOnSuccessListener {
-                        downloadUrl = filePath.downloadUrl.toString()
-                        uploadData()
+                         filePath.downloadUrl.addOnSuccessListener {
+                             downloadUrl = it.toString()
+                             uploadData()
+                         }
                     }
                 } else {
                     progressDialog.dismiss()
                     Toast.makeText(this, "Something went wrong. Please try again", Toast.LENGTH_LONG).show()
                 }
-            }
+            })
         } else {
             uploadData()
         }

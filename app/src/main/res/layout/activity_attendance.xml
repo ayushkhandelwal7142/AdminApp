@@ -11,17 +11,20 @@
         android:id="@+id/toolbar"
         layout="@layout/attendance_tool_bar" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:layout_centerInParent="true" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/attendanceRV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@id/btnMarkAttendance"
         android:layout_below="@+id/toolbar"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_above="@id/btnAddNewStudent"
-        android:layout_marginBottom="10dp"
-        android:visibility="visible" />
+        android:layout_margin="10dp"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/txtNoDataAvailable"
@@ -31,12 +34,13 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="50dp"
         android:text="  Student List is Empty\nPlease add new Student"
-        android:textColor="@color/light_gray"
+        android:textColor="#99CCD3"
         android:textSize="30dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="gone"/>
 
     <Button
-        android:id="@+id/btnAddNewStudent"
+        android:id="@+id/btnMarkAttendance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -44,7 +48,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:text="Add new Student" />
+        android:text="Mark Attendance" />
 
 
 </RelativeLayout>

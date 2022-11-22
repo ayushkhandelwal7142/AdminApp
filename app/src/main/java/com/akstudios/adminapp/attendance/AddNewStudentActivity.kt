@@ -79,9 +79,9 @@ class AddNewStudentActivity : AppCompatActivity() {
             val gender = sGender
             if (name.isEmpty() || rollNo.isEmpty()) {
                 Toast.makeText(this, "Please fill all details", Toast.LENGTH_LONG).show()
-            } else if (stClass.equals("Choose class")) {
+            } else if (stClass == "Choose class") {
                 Toast.makeText(this, "Please choose class", Toast.LENGTH_LONG).show()
-            } else if (gender.equals("Gender")) {
+            } else if (gender == "Gender") {
                 Toast.makeText(this, "Please choose Gender", Toast.LENGTH_LONG).show()
             } else {
                 val listData = AttendanceData(name, rollNo, sGender, sClass)
@@ -94,6 +94,7 @@ class AddNewStudentActivity : AppCompatActivity() {
         val reference = databaseReference.child("StudentData")
         val uniqueKey = reference.push().key
         if (uniqueKey != null) {
+            data.uniqueKey = uniqueKey
             reference.child(uniqueKey).setValue(data).addOnSuccessListener {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Student Data uploaded successfully", Toast.LENGTH_LONG).show()

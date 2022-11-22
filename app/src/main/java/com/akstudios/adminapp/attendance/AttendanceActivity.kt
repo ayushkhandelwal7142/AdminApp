@@ -26,12 +26,15 @@ class AttendanceActivity : AppCompatActivity() {
     private lateinit var databaseReference: DatabaseReference
     private var list: ArrayList<AttendanceData> = arrayListOf()
     private lateinit var btnCalender: ImageButton
-    private lateinit var btnAddNewStudent: Button
+     lateinit var btnAddNewStudent: ImageView
+    private lateinit var btnMarkAttendance: Button
+    private lateinit var progressBar: ProgressBar
     private lateinit var txtDate: TextView
     private  var sName: String = ""
     private  var sRollNumber: String = ""
     private  var sGender: String = ""
     private  var sClass: String = ""
+      var date: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +43,7 @@ class AttendanceActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         progressDialog = ProgressDialog(this)
+        progressBar = findViewById(R.id.progressBar)
         val toolbar = findViewById<Toolbar>(R.id.attendanceToolBar)
         btnCalender = findViewById(R.id.btnCalender)
         btnAddNewStudent = findViewById(R.id.btnAddNewStudent)
@@ -59,6 +63,24 @@ class AttendanceActivity : AppCompatActivity() {
             val intent = Intent(this, AddNewStudentActivity::class.java)
             startActivity(intent)
         }
+        btnMarkAttendance.setOnClickListener {
+            markAttendance()
+        }
+    }
+
+    private fun markAttendance() {
+        val alertDialog = android.app.AlertDialog.Builder(this)
+        alertDialog.apply {
+            setTitle("Mark Attendance")
+            setMessage("Do you want to mark or update attendance for $date ?")
+            setPositiveButton("Yes", object : DialogInterface.OnClickListener {
+                override fun onClick(p0: DialogInterface?, p1: Int) {
+
+                }
+
+            })
+        }
+
     }
 
     private fun selectDate() {
@@ -66,7 +88,7 @@ class AttendanceActivity : AppCompatActivity() {
         datePicker.show(supportFragmentManager, "DatePicker")
         datePicker.addOnPositiveButtonClickListener {
             val dateFormatter = SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault())
-            val date = dateFormatter.format(Date(it))
+            date = dateFormatter.format(Date(it))
             txtDate.text = date
         }
     }
@@ -78,6 +100,9 @@ class AttendanceActivity : AppCompatActivity() {
                 if (!snapshot.exists()) {
                     // no data available
                     Toast.makeText(this@AttendanceActivity, "No Data Available", Toast.LENGTH_LONG).show()
+                    binding.txtNoDataAvailable.visibility = View.VISIBLE
+                    binding.attendanceRV.visibility = View.GONE
+                    progressBar.visibility = View.GONE
                 } else {
                     for (i in snapshot.children) {
                         val data = i.getValue(AttendanceData::class.java)
@@ -92,6 +117,7 @@ class AttendanceActivity : AppCompatActivity() {
                         }
                         binding.txtNoDataAvailable.visibility = View.GONE
                         binding.attendanceRV.visibility = View.VISIBLE
+                        progressBar.visibility = View.GONE
                     }
                 }
             }
