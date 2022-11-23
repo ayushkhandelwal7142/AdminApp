@@ -48,7 +48,18 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Post"
+                android:hint="Contact Number"
+                android:inputType="textEmailAddress"
+                android:id="@+id/facultyContactNo"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Subject"
                 android:inputType="text"
                 android:id="@+id/facultyPost"/>
         </com.google.android.material.textfield.TextInputLayout>

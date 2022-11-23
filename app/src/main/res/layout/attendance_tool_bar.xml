@@ -28,7 +28,7 @@
             android:id="@+id/btnCalender"
             android:layout_width="30sp"
             android:layout_height="30sp"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="10sp"
             android:background="@color/splash_screen"
             android:src="@drawable/ic_calender"
             app:layout_constraintBottom_toBottomOf="parent"

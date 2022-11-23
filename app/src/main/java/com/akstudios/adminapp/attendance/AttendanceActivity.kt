@@ -26,7 +26,7 @@ class AttendanceActivity : AppCompatActivity() {
     private lateinit var databaseReference: DatabaseReference
     private var list: ArrayList<AttendanceData> = arrayListOf()
     private lateinit var btnCalender: ImageButton
-     lateinit var btnAddNewStudent: ImageView
+    lateinit var btnAddNewStudent: ImageView
     private lateinit var btnMarkAttendance: Button
     private lateinit var progressBar: ProgressBar
     private lateinit var txtDate: TextView
@@ -47,6 +47,7 @@ class AttendanceActivity : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.attendanceToolBar)
         btnCalender = findViewById(R.id.btnCalender)
         btnAddNewStudent = findViewById(R.id.btnAddNewStudent)
+        btnMarkAttendance = findViewById(R.id.btnMarkAttendance)
         txtDate = findViewById(R.id.txtDate)
         setSupportActionBar(toolbar)
 

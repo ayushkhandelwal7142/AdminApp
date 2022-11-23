@@ -39,6 +39,7 @@ class AddNewFacultyActivity : AppCompatActivity() {
     private lateinit var name: String
     private lateinit var email: String
     private lateinit var post: String
+    private lateinit var phNumber: String
     private lateinit var items: ArrayList<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +51,7 @@ class AddNewFacultyActivity : AppCompatActivity() {
 
         databaseReference = FirebaseDatabase.getInstance().reference.child("Faculty")
         storageReference = FirebaseStorage.getInstance().reference.child("Faculty")
-        items = arrayListOf("Select Post", "CSE", "ME", "ECE", "Civil")
+        items = arrayListOf("Select Subject", "English", "Hindi", "Maths")
         Log.d("ArrayList of Items", items.toString())
 
         progressDialog = ProgressDialog(this)
@@ -65,12 +66,14 @@ class AddNewFacultyActivity : AppCompatActivity() {
             name = binding.facultyName.text.toString()
             email = binding.facultyEmail.text.toString()
             post = binding.facultyPost.text.toString()
+            phNumber = binding.facultyContactNo.text.toString()
             selectedCategory = binding.spinnerFacultyCategory.selectedItem.toString()
             Log.d("Name", name)
             Log.d("E-mail", email)
             Log.d("post", post)
+            Log.d("phNumber", phNumber)
             Log.d("Selected Category", selectedCategory)
-            if (name.isEmpty() || email.isEmpty() || post.isEmpty() || selectedCategory == "Select Post") {
+            if (name.isEmpty() || email.isEmpty() || post.isEmpty() || phNumber.isEmpty() || selectedCategory == "Select Subject") {
                 when {
                     name.isEmpty() -> binding.facultyName.apply {
                         error = "Please type your name"
@@ -82,6 +85,10 @@ class AddNewFacultyActivity : AppCompatActivity() {
                     }
                     post.isEmpty() -> binding.facultyPost.apply {
                         error = "Please mention your post"
+                        requestFocus()
+                    }
+                    phNumber.isEmpty() -> binding.facultyContactNo.apply {
+                        error = "Please mention your contact number"
                         requestFocus()
                     }
                     else -> Toast.makeText(applicationContext, "Please select post", Toast.LENGTH_LONG).show()
@@ -128,7 +135,7 @@ class AddNewFacultyActivity : AppCompatActivity() {
         val date = currentDate.format(Date())
         val currentTime = SimpleDateFormat("hh:mm a", Locale.UK)
         val time = currentTime.format(Date())
-        val facultyData = FacultyData(uniqueKey, downloadUrl, date, time, name, email, post, selectedCategory)
+        val facultyData = FacultyData(uniqueKey, downloadUrl, date, time, name, email, post, selectedCategory, phNumber)
 
         if (uniqueKey != null) {
             databaseReference.child(uniqueKey).setValue(facultyData).addOnSuccessListener {

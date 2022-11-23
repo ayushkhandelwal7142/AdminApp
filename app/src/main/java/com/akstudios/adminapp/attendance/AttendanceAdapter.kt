@@ -40,7 +40,7 @@ class AttendanceAdapter(val context: Context, private val list:List<AttendanceDa
         } else {
             holder.studentCardView.setBackgroundColor(Color.parseColor("#FF99CCD3"))
         }
-        AttendanceActivity().btnAddNewStudent.setOnClickListener {
+       /* AttendanceActivity().btnAddNewStudent.setOnClickListener {
             val currentData = AttendanceActivity().date
             val alertDialog = android.app.AlertDialog.Builder(context)
             alertDialog.apply {
@@ -69,7 +69,7 @@ class AttendanceAdapter(val context: Context, private val list:List<AttendanceDa
 
                 })
             }
-        }
+        } */
     }
 
     override fun getItemCount(): Int {

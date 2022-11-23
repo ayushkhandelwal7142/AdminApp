@@ -26,6 +26,7 @@ class UpdateTeacherActivity : AppCompatActivity() {
     private lateinit var name: String
     private lateinit var email: String
     private lateinit var post: String
+    private lateinit var phNumber: String
     private lateinit var uniqueKey: String
     private lateinit var category: String
     private lateinit var profilePic: ImageView
@@ -55,6 +56,7 @@ class UpdateTeacherActivity : AppCompatActivity() {
         name = intent.getStringExtra("name").toString()
         email = intent.getStringExtra("email").toString()
         post = intent.getStringExtra("post").toString()
+        phNumber = intent.getStringExtra("phNumber").toString()
         uniqueKey = intent.getStringExtra("uniqueKey").toString()
         imageUrl = intent.getStringExtra("imageUrl").toString()
         category = intent.getStringExtra("category").toString()
@@ -68,7 +70,7 @@ class UpdateTeacherActivity : AppCompatActivity() {
         binding.utName.setText(name)
         binding.utEmail.setText(email)
         binding.utPost.setText(post)
-
+        binding.utContactNo.setText(phNumber)
         binding.utProfilePic.setOnClickListener {
             openGallery()
         }
@@ -79,6 +81,7 @@ class UpdateTeacherActivity : AppCompatActivity() {
             name = binding.utName.text.toString()
             email = binding.utEmail.text.toString()
             post = binding.utPost.text.toString()
+            phNumber = binding.utContactNo.text.toString()
             checkValidation()
         }
     }
@@ -99,7 +102,12 @@ class UpdateTeacherActivity : AppCompatActivity() {
                 error = "Empty"
                 requestFocus()
             }
-        } else if(bitmap == null) {
+        }else if (phNumber.isEmpty()) {
+            binding.utContactNo.apply {
+                error = "Empty"
+                requestFocus()
+            }
+        }else if(bitmap == null) {
             updateData(imageUrl)
         } else {
             uploadImage()
@@ -132,6 +140,7 @@ class UpdateTeacherActivity : AppCompatActivity() {
         hp["email"] = email
         hp["post"] = post
         hp["imageUrl"] = url
+        hp["phNumber"] = phNumber
 
         databaseReference.child(category).child(uniqueKey).updateChildren(hp as Map<String, Any>).addOnSuccessListener {
 

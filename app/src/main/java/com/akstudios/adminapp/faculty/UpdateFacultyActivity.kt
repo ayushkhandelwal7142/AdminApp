@@ -45,13 +45,13 @@ class UpdateFacultyActivity : AppCompatActivity() {
         }
         databaseReference = FirebaseDatabase.getInstance().reference.child("Faculty")
 
-        cseDepartment()
-        eceDepartment()
-        meDepartment()
+        englishDept()
+        hindiDept()
+        mathsDept()
     }
 
-    private fun cseDepartment() {
-        dbRef = databaseReference.child("CSE")
+    private fun englishDept() {
+        dbRef = databaseReference.child("English")
         dbRef.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!snapshot.exists()) {
@@ -65,7 +65,7 @@ class UpdateFacultyActivity : AppCompatActivity() {
                         if (data != null) {
                             list1.add(data)
                         }
-                        fAdapter = FacultyAdapter(list1, "CSE", this@UpdateFacultyActivity)
+                        fAdapter = FacultyAdapter(list1, "English", this@UpdateFacultyActivity)
                         binding.cseRV.apply {
                             setHasFixedSize(true)
                             layoutManager = LinearLayoutManager(this@UpdateFacultyActivity)
@@ -81,8 +81,8 @@ class UpdateFacultyActivity : AppCompatActivity() {
 
         })
     }
-    private fun eceDepartment() {
-        dbRef = databaseReference.child("ECE")
+    private fun hindiDept() {
+        dbRef = databaseReference.child("Hindi")
         dbRef.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!snapshot.exists()) {
@@ -96,7 +96,7 @@ class UpdateFacultyActivity : AppCompatActivity() {
                         if (data != null) {
                             list2.add(data)
                         }
-                        fAdapter = FacultyAdapter(list2, "ECE",  this@UpdateFacultyActivity)
+                        fAdapter = FacultyAdapter(list2, "Hindi",  this@UpdateFacultyActivity)
                         binding.eceRV.apply {
                             setHasFixedSize(true)
                             layoutManager = LinearLayoutManager(this@UpdateFacultyActivity)
@@ -112,8 +112,8 @@ class UpdateFacultyActivity : AppCompatActivity() {
 
         })
     }
-    private fun meDepartment() {
-        dbRef = databaseReference.child("ME")
+    private fun mathsDept() {
+        dbRef = databaseReference.child("Maths")
         dbRef.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!snapshot.exists()) {
@@ -127,7 +127,7 @@ class UpdateFacultyActivity : AppCompatActivity() {
                         if (data != null) {
                             list3.add(data)
                         }
-                        fAdapter = FacultyAdapter(list3, "ME", this@UpdateFacultyActivity)
+                        fAdapter = FacultyAdapter(list3, "Maths", this@UpdateFacultyActivity)
                         binding.meRV.apply {
                             setHasFixedSize(true)
                             layoutManager = LinearLayoutManager(this@UpdateFacultyActivity)

@@ -16,6 +16,7 @@ class FacultyAdapter(private val list: ArrayList<FacultyData>, private val categ
         val name: TextView = itemView.findViewById(R.id.facultyNameRV)
         val email: TextView = itemView.findViewById(R.id.facultyEmailRV)
         val post: TextView = itemView.findViewById(R.id.facultyPostRV)
+        val phNumber: TextView = itemView.findViewById(R.id.facultyContactNoRV)
         val profilePic: ImageView = itemView.findViewById(R.id.facultyImage)
         val btnUpdateInfo: Button = itemView.findViewById(R.id.btnFacultyUpdateInfoRV)
 
@@ -31,6 +32,7 @@ class FacultyAdapter(private val list: ArrayList<FacultyData>, private val categ
         holder.name.text = list[position].name
         holder.email.text = list[position].email
         holder.post.text = list[position].post
+        holder.phNumber.text = list[position].phNumber
         Glide.with(context).load(list[position].url).into(holder.profilePic)
 
         holder.btnUpdateInfo.setOnClickListener {
@@ -38,6 +40,7 @@ class FacultyAdapter(private val list: ArrayList<FacultyData>, private val categ
             intent.putExtra("name", list[position].name)
             intent.putExtra("email", list[position].email)
             intent.putExtra("post", list[position].post)
+            intent.putExtra("phNumber", list[position].phNumber)
             intent.putExtra("imageUrl", list[position].url)
             intent.putExtra("uniqueKey", list[position].uniqueKey)
             intent.putExtra("category", category)
