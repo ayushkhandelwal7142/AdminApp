@@ -9,8 +9,10 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.children
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.akstudios.adminapp.MainActivity
 import com.akstudios.adminapp.R
 import com.akstudios.adminapp.databinding.ActivityAttendanceBinding
@@ -19,6 +21,7 @@ import com.google.firebase.database.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 class AttendanceActivity : AppCompatActivity() {
     private lateinit var progressDialog: ProgressDialog
@@ -29,6 +32,7 @@ class AttendanceActivity : AppCompatActivity() {
     lateinit var btnAddNewStudent: ImageView
     private lateinit var btnMarkAttendance: Button
     private lateinit var progressBar: ProgressBar
+    //private lateinit var attendanceList: ListView
     private lateinit var txtDate: TextView
     private  var sName: String = ""
     private  var sRollNumber: String = ""
@@ -76,11 +80,44 @@ class AttendanceActivity : AppCompatActivity() {
             setMessage("Do you want to mark or update attendance for $date ?")
             setPositiveButton("Yes", object : DialogInterface.OnClickListener {
                 override fun onClick(p0: DialogInterface?, p1: Int) {
+                    val attendanceList: RecyclerView = findViewById(R.id.attendanceRV)
+                    var hp = HashMap<String, Int>()
+                    for (i in 0 until attendanceList.childCount) {
+                        val newView = attendanceList.getChildAt(i)
+                        val checkbox = newView.findViewById<CheckBox>(R.id.checkBox)
+                        val rollNo = newView.findViewById<TextView>(R.id.rollNo)
+                        if (checkbox.isChecked) {
+                            hp[rollNo.text.toString()] = 1
+                        } else {
+                            hp[rollNo.text.toString()] = 0
+                        }
+                    }
+                    val reference = databaseReference.child("Attendance")
 
+                    val uniqueKey = reference.push().key
+                    if (uniqueKey != null) {
+                        reference.child(txtDate.text.toString()).setValue(hp).addOnSuccessListener {
+                            progressDialog.dismiss()
+                            Toast.makeText(this@AttendanceActivity, "Student Data uploaded successfully", Toast.LENGTH_LONG).show()
+                            val intent = Intent(this@AttendanceActivity, AttendanceActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }.addOnFailureListener {
+                            progressDialog.dismiss()
+                            Toast.makeText(this@AttendanceActivity, "Could Not Upload Student Data. PLease try again later", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                    else {
+                        progressDialog.dismiss()
+                        Toast.makeText(this@AttendanceActivity, "Error. Could not found unique key", Toast.LENGTH_LONG).show()
+                    }
                 }
 
             })
-        }
+            setNegativeButton("No", object: DialogInterface.OnClickListener {
+                override fun onClick(p0: DialogInterface?, p1: Int) {}
+            })
+        }.show()
 
     }
 
