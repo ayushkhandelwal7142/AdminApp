@@ -10,6 +10,10 @@ import android.provider.OpenableColumns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.akstudios.adminapp.databinding.ActivityUploadPdfBinding
+import com.akstudios.adminapp.services.Constants
+import com.akstudios.adminapp.services.Notification
+import com.akstudios.adminapp.services.NotificationData
+import com.akstudios.adminapp.services.PushNotifications
 import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -91,6 +95,8 @@ class UploadPdfActivity : AppCompatActivity() {
                 progressDialog.dismiss()
                 binding.pdfTextView.text = ""
                 Toast.makeText(this, "Pdf uploaded successfully", Toast.LENGTH_LONG).show()
+                val notification = PushNotifications(NotificationData("New Pdf Uploaded", "Hey! You have one unchecked Pdf file"), Constants.TOPIC)
+                Notification().sendNotification(this, notification)
 //                val intent = Intent(this, MainActivity::class.java)
 //                startActivity(intent)
                 finish()

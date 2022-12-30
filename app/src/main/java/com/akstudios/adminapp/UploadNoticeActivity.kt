@@ -14,6 +14,7 @@ import com.akstudios.adminapp.api.ApiUtilities
 import com.akstudios.adminapp.dataClasses.NoticeData
 import com.akstudios.adminapp.databinding.ActivityUploadNoticeBinding
 import com.akstudios.adminapp.services.Constants
+import com.akstudios.adminapp.services.Notification
 import com.akstudios.adminapp.services.NotificationData
 import com.akstudios.adminapp.services.PushNotifications
 import com.google.android.gms.tasks.OnCompleteListener
@@ -123,8 +124,8 @@ class UploadNoticeActivity : AppCompatActivity() {
             databaseReference.child(uniqueKey).setValue(noticeData).addOnSuccessListener {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Notice Uploaded", Toast.LENGTH_LONG).show()
-                val notification = PushNotifications(NotificationData("New Notice Uploaded", "You have one unchecked Notice"), Constants.TOPIC)
-                sendNotification(notification)
+                val notification = PushNotifications(NotificationData("New Notice Uploaded", "Hey! You have one unchecked Notice"), Constants.TOPIC)
+                Notification().sendNotification(this, notification)
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -138,25 +139,7 @@ class UploadNoticeActivity : AppCompatActivity() {
         }
     }
 
-    private fun sendNotification(notification: PushNotifications) {
-        ApiUtilities.getClient().sendNotification(notification).enqueue(object:
-            Callback<PushNotifications> {
-            override fun onResponse(
-                call: Call<PushNotifications>,
-                response: Response<PushNotifications>
-            ) {
-                if (response.isSuccessful) {
-                    Toast.makeText(this@UploadNoticeActivity, "Notification sent successfully", Toast.LENGTH_LONG).show()
-                } else {
-                    Toast.makeText(this@UploadNoticeActivity, "Notification sending unsuccessful", Toast.LENGTH_LONG).show()
-                }
-            }
 
-            override fun onFailure(call: Call<PushNotifications>, t: Throwable) {
-                Toast.makeText(this@UploadNoticeActivity, t.message, Toast.LENGTH_LONG).show()
-            }
-        })
-    }
 
     private fun openGallery() {
         val pickImage = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)

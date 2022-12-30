@@ -12,6 +12,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.akstudios.adminapp.dataClasses.GalleryImageData
 import com.akstudios.adminapp.databinding.ActivityUploadImageBinding
+import com.akstudios.adminapp.services.Constants
+import com.akstudios.adminapp.services.Notification
+import com.akstudios.adminapp.services.NotificationData
+import com.akstudios.adminapp.services.PushNotifications
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -140,6 +144,8 @@ class UploadImageActivity : AppCompatActivity() {
             databaseReference.child(uniqueKey).setValue(galleryImageData).addOnSuccessListener {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Image uploaded successfully", Toast.LENGTH_LONG).show()
+                val notification = PushNotifications(NotificationData("New Image Uploaded", "Hey! You have one unchecked Image"), Constants.TOPIC)
+                Notification().sendNotification(this, notification)
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
