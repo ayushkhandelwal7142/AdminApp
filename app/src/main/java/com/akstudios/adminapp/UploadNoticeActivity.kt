@@ -10,14 +10,22 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.akstudios.adminapp.api.ApiUtilities
 import com.akstudios.adminapp.dataClasses.NoticeData
 import com.akstudios.adminapp.databinding.ActivityUploadNoticeBinding
+import com.akstudios.adminapp.services.Constants
+import com.akstudios.adminapp.services.NotificationData
+import com.akstudios.adminapp.services.PushNotifications
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.ByteArrayOutputStream
 import java.lang.Exception
 import java.text.SimpleDateFormat
@@ -44,6 +52,8 @@ class UploadNoticeActivity : AppCompatActivity() {
 
         binding = ActivityUploadNoticeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        FirebaseMessaging.getInstance().subscribeToTopic(Constants.TOPIC)
 
         binding.addImage.setOnClickListener {
             openGallery()
@@ -113,6 +123,8 @@ class UploadNoticeActivity : AppCompatActivity() {
             databaseReference.child(uniqueKey).setValue(noticeData).addOnSuccessListener {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Notice Uploaded", Toast.LENGTH_LONG).show()
+                val notification = PushNotifications(NotificationData("New Notice Uploaded", "You have one unchecked Notice"), Constants.TOPIC)
+                sendNotification(notification)
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -124,6 +136,26 @@ class UploadNoticeActivity : AppCompatActivity() {
             progressDialog.dismiss()
             Toast.makeText(this, "Error. Could not found Unique Key", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun sendNotification(notification: PushNotifications) {
+        ApiUtilities.getClient().sendNotification(notification).enqueue(object:
+            Callback<PushNotifications> {
+            override fun onResponse(
+                call: Call<PushNotifications>,
+                response: Response<PushNotifications>
+            ) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@UploadNoticeActivity, "Notification sent successfully", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(this@UploadNoticeActivity, "Notification sending unsuccessful", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            override fun onFailure(call: Call<PushNotifications>, t: Throwable) {
+                Toast.makeText(this@UploadNoticeActivity, t.message, Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
     private fun openGallery() {
