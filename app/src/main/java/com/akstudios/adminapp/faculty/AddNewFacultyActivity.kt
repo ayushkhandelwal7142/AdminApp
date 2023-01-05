@@ -48,7 +48,7 @@ class AddNewFacultyActivity : AppCompatActivity() {
 
         binding = ActivityAddNewFacultyBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        
         databaseReference = FirebaseDatabase.getInstance().reference.child("Faculty")
         storageReference = FirebaseStorage.getInstance().reference.child("Faculty")
         items = arrayListOf("Select Subject", "English", "Hindi", "Maths")
@@ -101,7 +101,8 @@ class AddNewFacultyActivity : AppCompatActivity() {
     }
 
     private fun uploadProfilePic() {
-        if (bitmap != null) {
+        progressDialog.setMessage("Uploading...")
+        progressDialog.show()
             val baos = ByteArrayOutputStream()
             bitmap!!.compress(Bitmap.CompressFormat.JPEG, 50, baos)
             val finalImage = baos.toByteArray()
@@ -120,10 +121,6 @@ class AddNewFacultyActivity : AppCompatActivity() {
                     Toast.makeText(this, "Something went wrong. Please try again", Toast.LENGTH_LONG).show()
                 }
             })
-        } else {
-            uploadData()
-        }
-
     }
 
     private fun uploadData() {

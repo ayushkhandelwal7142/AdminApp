@@ -3,11 +3,11 @@ package com.akstudios.adminapp
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.akstudios.adminapp.attendance.AttendanceActivity
 import com.akstudios.adminapp.databinding.ActivityMainBinding
 import com.akstudios.adminapp.faculty.UpdateFacultyActivity
 import com.akstudios.adminapp.loginScreen.LoginActivity
@@ -35,8 +35,13 @@ class MainActivity : AppCompatActivity() {
             signOut()
         }
         binding.takeAttendance.setOnClickListener {
-            val intent = Intent(this, AttendanceActivity::class.java)
+            val url = "https://docs.google.com/spreadsheets/d/1RAfGkFFMOgWNxJxbeidTO9xV5U_R1PeAQbvXk9-t28o/edit#gid=186001220"
+            //val url = "https://docs.google.com/spreadsheets/d/1bARJisqIq6-kdUDi19JcMRYs7GDGqkctaFfc2abTMPU/edit#gid=186001220"
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
             startActivity(intent)
+//            val intent = Intent(this, AttendanceActivity::class.java)
+//            startActivity(intent)
         }
         binding.addNotice.setOnClickListener {
             val intent = Intent(this, UploadNoticeActivity::class.java)
