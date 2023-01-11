@@ -3,6 +3,7 @@ package com.akstudios.adminapp
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,8 +17,15 @@ import com.bumptech.glide.Glide
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class NoticeAdapter(val list: ArrayList<NoticeData>, val context: Context) :
+class NoticeAdapter(private val context: Context) :
     RecyclerView.Adapter<NoticeAdapter.MyViewHolder>() {
+    private val noticeData: ArrayList<NoticeData?> = arrayListOf()
+
+    fun addAll(list: ArrayList<NoticeData?>) {
+        val initsize: Int = list.size
+        noticeData.addAll(list)
+        notifyItemRangeChanged(initsize, list.size)
+    }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val noticeImage = itemView.findViewById<ImageView>(R.id.deleteNoticeImage)
@@ -35,10 +43,10 @@ class NoticeAdapter(val list: ArrayList<NoticeData>, val context: Context) :
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.noticeDate.text = list[position].date
-        holder.noticeTime.text = list[position].time
-        holder.noticeTitle.text = list[position].title
-        Glide.with(context).load(list[position].imageUrl).into(holder.noticeImage)
+        holder.noticeDate.text = noticeData[position]?.date
+        holder.noticeTime.text = noticeData[position]?.time
+        holder.noticeTitle.text = noticeData[position]?.title
+        Glide.with(context).load(noticeData[position]?.imageUrl).into(holder.noticeImage)
         holder.btnDeleteNotice.setOnClickListener {
             val builder = AlertDialog.Builder(context)
             builder.apply {
@@ -47,7 +55,7 @@ class NoticeAdapter(val list: ArrayList<NoticeData>, val context: Context) :
                 setPositiveButton("Yes", DialogInterface.OnClickListener { dialogInterface, i ->
                     val databaseReference: DatabaseReference =
                         FirebaseDatabase.getInstance().reference.child("Notice")
-                    databaseReference.child(list[position].key.toString()).removeValue()
+                    databaseReference.child(noticeData[position]?.key.toString()).removeValue()
                         .addOnSuccessListener {
                             Toast.makeText(context, "Notice Deleted", Toast.LENGTH_LONG).show()
 
@@ -78,6 +86,7 @@ class NoticeAdapter(val list: ArrayList<NoticeData>, val context: Context) :
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        Log.d("NoticeData size = ", noticeData.size.toString())
+        return noticeData.size
     }
 }

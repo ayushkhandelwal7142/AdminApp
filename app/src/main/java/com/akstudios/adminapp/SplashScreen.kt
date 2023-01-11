@@ -1,6 +1,7 @@
 package com.akstudios.adminapp
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -11,11 +12,14 @@ import android.widget.TextView
 import android.widget.Toast
 import com.akstudios.adminapp.loginScreen.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.ValueEventListener
 
 class SplashScreen : AppCompatActivity() {
     private lateinit var schoolName: TextView
     private lateinit var appType: TextView
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var editor: SharedPreferences.Editor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,19 +32,40 @@ class SplashScreen : AppCompatActivity() {
         val appTypeAnim: Animation = AnimationUtils.loadAnimation(this, R.anim.animation1)
         schoolName.startAnimation(schoolNameAnim)
         //appType.startAnimation(appTypeAnim)
+        sharedPreferences = getSharedPreferences("login", MODE_PRIVATE)
+        editor = sharedPreferences.edit()
 
         val handler = Handler(Looper.getMainLooper())
-        handler.postDelayed({
-            if (firebaseAuth.currentUser != null) {
-                Toast.makeText(this, "Admin is already logged in!", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-            } else {
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-                finish()
+        handler.postDelayed(object :Runnable{
+            override fun run() {
+                if (sharedPreferences.getString("isLogin", "false") == "false") {
+                    openLoginActivity()
+                } else {
+                    openMainActivity()
+                }
             }
         }, 3000)
+//        handler.postDelayed({
+//            if (firebaseAuth.currentUser != null) {
+//                Toast.makeText(this, "Admin is already logged in!", Toast.LENGTH_SHORT).show()
+//                val intent = Intent(this, MainActivity::class.java)
+//                startActivity(intent)
+//                finish()
+//            } else {
+//                val intent = Intent(this, LoginActivity::class.java)
+//                startActivity(intent)
+//                finish()
+//            }
+//        }, 3000)
+    }
+    private fun openLoginActivity() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+    private fun openMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
