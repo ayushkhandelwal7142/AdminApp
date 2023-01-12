@@ -1,19 +1,15 @@
 package com.akstudios.adminapp.attendance
 
 import android.content.Context
-import android.content.DialogInterface
 import android.graphics.Color
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.akstudios.adminapp.R
 import com.google.android.material.card.MaterialCardView
-import com.google.firebase.database.FirebaseDatabase
 
 class AttendanceAdapter(val context: Context, private val list:List<AttendanceData>): RecyclerView.Adapter<AttendanceAdapter.AttendanceViewHolder>() {
 

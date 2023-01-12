@@ -1,4 +1,4 @@
-package com.akstudios.adminapp
+package com.akstudios.adminapp.notice
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,13 +6,11 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.AbsListView
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.akstudios.adminapp.dataClasses.NoticeData
+import com.akstudios.adminapp.R
 import com.akstudios.adminapp.databinding.ActivityDeleteNoticeBinding
-import com.akstudios.adminapp.faculty.FacultyAdapter
 import com.google.firebase.database.*
 
 class DeleteNoticeActivity : AppCompatActivity() {

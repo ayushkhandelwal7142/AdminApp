@@ -1,4 +1,4 @@
-package com.akstudios.adminapp
+package com.akstudios.adminapp.gelleryImage
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -10,12 +10,13 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.akstudios.adminapp.dataClasses.GalleryImageData
+import com.akstudios.adminapp.MainActivity
+import com.akstudios.adminapp.R
 import com.akstudios.adminapp.databinding.ActivityUploadImageBinding
-import com.akstudios.adminapp.services.Constants
-import com.akstudios.adminapp.services.Notification
-import com.akstudios.adminapp.services.NotificationData
-import com.akstudios.adminapp.services.PushNotifications
+import com.akstudios.adminapp.constants.Constants
+import com.akstudios.adminapp.notificationService.Notification
+import com.akstudios.adminapp.notificationService.NotificationData
+import com.akstudios.adminapp.notificationService.PushNotifications
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase

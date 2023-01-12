@@ -1,8 +1,8 @@
-package com.akstudios.adminapp.services
+package com.akstudios.adminapp.notificationService
 
 import android.content.Context
 import android.widget.Toast
-import com.akstudios.adminapp.api.ApiUtilities
+import com.akstudios.adminapp.notificationService.api.ApiUtilities
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

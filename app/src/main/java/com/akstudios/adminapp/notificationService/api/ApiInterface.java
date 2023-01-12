@@ -1,7 +1,7 @@
-package com.akstudios.adminapp.api;
+package com.akstudios.adminapp.notificationService.api;
 
-import com.akstudios.adminapp.services.Constants;
-import com.akstudios.adminapp.services.PushNotifications;
+import com.akstudios.adminapp.constants.Constants;
+import com.akstudios.adminapp.notificationService.PushNotifications;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

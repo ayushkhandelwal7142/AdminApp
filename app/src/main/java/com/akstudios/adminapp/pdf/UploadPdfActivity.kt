@@ -1,4 +1,4 @@
-package com.akstudios.adminapp
+package com.akstudios.adminapp.pdf
 
 import android.annotation.SuppressLint
 import android.app.ProgressDialog
@@ -9,11 +9,12 @@ import android.os.Bundle
 import android.provider.OpenableColumns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.akstudios.adminapp.R
 import com.akstudios.adminapp.databinding.ActivityUploadPdfBinding
-import com.akstudios.adminapp.services.Constants
-import com.akstudios.adminapp.services.Notification
-import com.akstudios.adminapp.services.NotificationData
-import com.akstudios.adminapp.services.PushNotifications
+import com.akstudios.adminapp.constants.Constants
+import com.akstudios.adminapp.notificationService.Notification
+import com.akstudios.adminapp.notificationService.NotificationData
+import com.akstudios.adminapp.notificationService.PushNotifications
 import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase

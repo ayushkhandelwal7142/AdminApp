@@ -27,7 +27,7 @@
             android:name=".loginScreen.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".splashScreen.SplashScreen"
             android:exported="true"
             android:theme="@style/Theme.AdminApp_Splash">
             <intent-filter>
@@ -37,7 +37,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DeleteNoticeActivity"
+            android:name=".notice.DeleteNoticeActivity"
             android:exported="false" />
         <activity
             android:name=".faculty.UpdateTeacherActivity"
@@ -49,17 +49,17 @@
             android:name=".faculty.UpdateFacultyActivity"
             android:exported="false" />
         <activity
-            android:name=".UploadPdfActivity"
+            android:name=".pdf.UploadPdfActivity"
             android:exported="false" />
         <activity
-            android:name=".UploadImageActivity"
+            android:name=".gelleryImage.UploadImageActivity"
             android:exported="false" />
         <activity
-            android:name=".UploadNoticeActivity"
+            android:name=".notice.UploadNoticeActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

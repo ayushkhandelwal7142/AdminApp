@@ -1,4 +1,4 @@
-package com.akstudios.adminapp
+package com.akstudios.adminapp.splashScreen
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -9,10 +9,10 @@ import android.os.Looper
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.TextView
-import android.widget.Toast
+import com.akstudios.adminapp.MainActivity
+import com.akstudios.adminapp.R
 import com.akstudios.adminapp.loginScreen.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.ValueEventListener
 
 class SplashScreen : AppCompatActivity() {
     private lateinit var schoolName: TextView

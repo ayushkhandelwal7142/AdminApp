@@ -9,10 +9,8 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.ArrayAdapter
-import android.widget.ProgressBar
 import android.widget.Toast
 import com.akstudios.adminapp.R
-import com.akstudios.adminapp.dataClasses.GalleryImageData
 import com.akstudios.adminapp.databinding.ActivityAddNewFacultyBinding
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.database.DatabaseReference
@@ -20,7 +18,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
-import com.google.firebase.storage.ktx.storageMetadata
 import java.io.ByteArrayOutputStream
 import java.lang.Exception
 import java.text.SimpleDateFormat

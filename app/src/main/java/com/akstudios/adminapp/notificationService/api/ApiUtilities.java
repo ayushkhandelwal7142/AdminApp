@@ -1,6 +1,6 @@
-package com.akstudios.adminapp.api;
+package com.akstudios.adminapp.notificationService.api;
 
-import com.akstudios.adminapp.services.Constants;
+import com.akstudios.adminapp.constants.Constants;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

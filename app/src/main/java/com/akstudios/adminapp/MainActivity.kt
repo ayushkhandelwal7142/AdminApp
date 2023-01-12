@@ -13,10 +13,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.akstudios.adminapp.databinding.ActivityMainBinding
 import com.akstudios.adminapp.faculty.UpdateFacultyActivity
+import com.akstudios.adminapp.gelleryImage.UploadImageActivity
 import com.akstudios.adminapp.loginScreen.LoginActivity
-import com.akstudios.adminapp.services.Constants.Companion.TOPIC
+import com.akstudios.adminapp.notice.DeleteNoticeActivity
+import com.akstudios.adminapp.notice.UploadNoticeActivity
+import com.akstudios.adminapp.pdf.UploadPdfActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

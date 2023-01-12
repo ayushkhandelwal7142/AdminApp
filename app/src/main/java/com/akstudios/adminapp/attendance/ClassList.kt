@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.akstudios.adminapp.R
 import com.akstudios.adminapp.databinding.ActivityClassListBinding
-import com.akstudios.adminapp.databinding.ActivityMainBinding
 
 class ClassList : AppCompatActivity() {
     private lateinit var binding: ActivityClassListBinding

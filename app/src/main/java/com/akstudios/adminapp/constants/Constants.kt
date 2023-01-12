@@ -1,4 +1,4 @@
-package com.akstudios.adminapp.services
+package com.akstudios.adminapp.constants
 
 class Constants {
     companion object {
