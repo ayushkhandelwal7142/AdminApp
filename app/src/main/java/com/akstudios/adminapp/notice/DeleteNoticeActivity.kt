@@ -103,6 +103,7 @@ class DeleteNoticeActivity : AppCompatActivity() {
                         binding.deleteNoticePB.visibility = View.GONE
                     } else  //reach to end no further child avaialable to show
                     {
+                        binding.deleteNoticePB.visibility = View.GONE
                         isMaxData = true
                     }
                     binding.scrollingPB.visibility = View.GONE

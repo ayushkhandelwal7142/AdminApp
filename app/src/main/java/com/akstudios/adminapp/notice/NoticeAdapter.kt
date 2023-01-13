@@ -22,17 +22,17 @@ class NoticeAdapter(private val context: Context) :
     private val noticeData: ArrayList<NoticeData?> = arrayListOf()
 
     fun addAll(list: ArrayList<NoticeData?>) {
-        val initsize: Int = list.size
+        val listSize: Int = list.size
         noticeData.addAll(list)
-        notifyItemRangeChanged(initsize, list.size)
+        notifyItemRangeChanged(listSize, list.size)
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val noticeImage = itemView.findViewById<ImageView>(R.id.deleteNoticeImage)
-        val btnDeleteNotice = itemView.findViewById<Button>(R.id.btnDeleteNotice)
-        val noticeTitle = itemView.findViewById<TextView>(R.id.noticeTitle)
-        val noticeDate = itemView.findViewById<TextView>(R.id.noticeDate)
-        val noticeTime = itemView.findViewById<TextView>(R.id.noticeTime)
+        val noticeImage: ImageView = itemView.findViewById(R.id.deleteNoticeImage)
+        val btnDeleteNotice: Button = itemView.findViewById(R.id.btnDeleteNotice)
+        val noticeTitle: TextView = itemView.findViewById(R.id.noticeTitle)
+        val noticeDate: TextView = itemView.findViewById(R.id.noticeDate)
+        val noticeTime: TextView = itemView.findViewById(R.id.noticeTime)
 
     }
 
@@ -79,9 +79,7 @@ class NoticeAdapter(private val context: Context) :
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-            if (alertDialog != null) {
-                alertDialog?.show()
-            }
+            alertDialog?.show()
         }
     }
 
