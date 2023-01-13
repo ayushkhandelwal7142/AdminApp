@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">AdminApp</string>
     <string name="hello_what_you_want_to_do">Hello, What you want to do ?</string>
+    <string name="school_name">ABC SCHOOL</string>
+    <string name="admin_app">Admin App</string>
+    <string name="login_email">akstudios@gmail.com</string>
+    <string name="login_password">12345678</string>
+    <string name="attendance_spreadsheet_url">https://docs.google.com/spreadsheets/d/1RAfGkFFMOgWNxJxbeidTO9xV5U_R1PeAQbvXk9-t28o/edit#gid=186001220</string>
 </resources>

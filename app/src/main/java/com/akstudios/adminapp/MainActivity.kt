@@ -36,6 +36,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.tw.apply {
+            text = ""
+            setCharacterDelay(100)
+            animateText("Hello, What you want to do ?")
+        }
         firebaseAuth = FirebaseAuth.getInstance()
         toolbar = findViewById(R.id.appBar)
         btnSignOut = findViewById(R.id.btnSignOut)
@@ -53,8 +58,7 @@ class MainActivity : AppCompatActivity() {
             //signOut()
         }
         binding.takeAttendance.setOnClickListener {
-            val url = "https://docs.google.com/spreadsheets/d/1RAfGkFFMOgWNxJxbeidTO9xV5U_R1PeAQbvXk9-t28o/edit#gid=186001220"
-            //val url = "https://docs.google.com/spreadsheets/d/1bARJisqIq6-kdUDi19JcMRYs7GDGqkctaFfc2abTMPU/edit#gid=186001220"
+            val url = getString(R.string.attendance_spreadsheet_url)
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(url)
             startActivity(intent)

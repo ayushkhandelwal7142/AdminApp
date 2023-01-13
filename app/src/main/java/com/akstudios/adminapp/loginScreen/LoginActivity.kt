@@ -76,17 +76,17 @@ class LoginActivity : AppCompatActivity() {
 
         if (email.isEmpty()) {
             etEmailAddress.apply {
-                setError("Required field")
+                error = "Required field"
                 requestFocus()
             }
         } else if (password.isEmpty()) {
             etPassword.apply {
-                setError("Required field")
+                error = "Required field"
                 requestFocus()
             }
         } else if (adminName.isEmpty()) {
             etAdminName.apply {
-                setError("Required field")
+                error = "Required field"
                 requestFocus()
             }
         } else {
@@ -95,7 +95,7 @@ class LoginActivity : AppCompatActivity() {
                 setMessage("Please wait...")
                 show()
             }
-            if (email.equals("akstudios@gmail.com") && password.equals("12345678")) {
+            if (email == getString(R.string.login_email) && password == getString(R.string.login_password)) {
                 progressDialog.dismiss()
                 editor.putString("isLogin", "true")
                 editor.putString("adminName", adminName)

@@ -66,8 +66,7 @@
             android:textAllCaps="false"/>
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            android:visibility="gone">
+            android:layout_height="400dp">
 
             <ImageView
                 android:id="@+id/imgViewNotice"
