@@ -1,11 +1,9 @@
 package com.akstudios.adminapp;
 
 
-
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
 
 public class TypeWriter extends androidx.appcompat.widget.AppCompatTextView {
@@ -22,9 +20,9 @@ public class TypeWriter extends androidx.appcompat.widget.AppCompatTextView {
         super(context, attrs);
     }
 
-    private Handler mHandler = new Handler();
+    private final Handler mHandler = new Handler();
 
-    private Runnable characterAdder = new Runnable() {
+    private final Runnable characterAdder = new Runnable() {
 
         @Override
         public void run() {
