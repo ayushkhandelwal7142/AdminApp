@@ -60,11 +60,12 @@ class UpdateTeacherActivity : AppCompatActivity() {
         imageUrl = intent.getStringExtra("imageUrl").toString()
         category = intent.getStringExtra("category").toString()
 
-
-        try {
-            Glide.with(this).load(imageUrl).into(binding.utProfilePic)
-        } catch (e: Exception) {
-            e.printStackTrace()
+        if (imageUrl.isNotEmpty()) {
+            try {
+                Glide.with(this).load(imageUrl).into(binding.utProfilePic)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
         binding.utName.setText(name)
         binding.utEmail.setText(email)

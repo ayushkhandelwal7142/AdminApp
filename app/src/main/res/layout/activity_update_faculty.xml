@@ -16,7 +16,8 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,14 +34,14 @@
            <androidx.recyclerview.widget.RecyclerView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:id="@+id/cseRV"
+               android:id="@+id/engRV"
                android:nestedScrollingEnabled="false"
                android:visibility="gone"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/cseNoData">
+                android:id="@+id/engNoData">
                 <include layout="@layout/no_data_available"/>
             </LinearLayout>
             <View
@@ -52,7 +53,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="HINDI DEPARTMENT"
+                android:text="SCIENCE DEPARTMENT"
                 android:textSize="20sp"
                 android:gravity="center"
                 android:textStyle="bold"/>
@@ -61,14 +62,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/meRV"
+                android:id="@+id/sciRV"
                 android:nestedScrollingEnabled="false"
                 android:visibility="gone"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/meNoData">
+                android:id="@+id/sciNoData">
             <include layout="@layout/no_data_available"/>
             </LinearLayout>
             <View
@@ -89,14 +90,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/eceRV"
+                android:id="@+id/mathsRV"
                 android:nestedScrollingEnabled="false"
                 android:visibility="gone"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/eceNoData">
+                android:id="@+id/mathsNoData">
                 <include layout="@layout/no_data_available"/>
             </LinearLayout>
             <View

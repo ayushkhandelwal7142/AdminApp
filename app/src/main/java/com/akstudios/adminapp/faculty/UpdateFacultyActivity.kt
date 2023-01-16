@@ -46,7 +46,7 @@ class UpdateFacultyActivity : AppCompatActivity() {
         databaseReference = FirebaseDatabase.getInstance().reference.child("Faculty")
 
         englishDept()
-        hindiDept()
+        scienceDept()
         mathsDept()
     }
 
@@ -55,18 +55,18 @@ class UpdateFacultyActivity : AppCompatActivity() {
         dbRef.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!snapshot.exists()) {
-                    binding.cseNoData.visibility = View.VISIBLE
-                    binding.cseRV.visibility = View.GONE
+                    binding.engNoData.visibility = View.VISIBLE
+                    binding.engRV.visibility = View.GONE
                 } else {
-                    binding.cseNoData.visibility = View.GONE
-                    binding.cseRV.visibility = View.VISIBLE
+                    binding.engNoData.visibility = View.GONE
+                    binding.engRV.visibility = View.VISIBLE
                     for (i in snapshot.children) {
                         val data = i.getValue(FacultyData::class.java)
                         if (data != null) {
                             list1.add(data)
                         }
                         fAdapter = FacultyAdapter(list1, "English", this@UpdateFacultyActivity)
-                        binding.cseRV.apply {
+                        binding.engRV.apply {
                             setHasFixedSize(true)
                             layoutManager = LinearLayoutManager(this@UpdateFacultyActivity)
                             adapter = fAdapter
@@ -81,23 +81,23 @@ class UpdateFacultyActivity : AppCompatActivity() {
 
         })
     }
-    private fun hindiDept() {
-        dbRef = databaseReference.child("Hindi")
+    private fun scienceDept() {
+        dbRef = databaseReference.child("Science")
         dbRef.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!snapshot.exists()) {
-                    binding.eceNoData.visibility = View.VISIBLE
-                    binding.eceRV.visibility = View.GONE
+                    binding.sciNoData.visibility = View.VISIBLE
+                    binding.sciRV.visibility = View.GONE
                 } else {
-                    binding.eceNoData.visibility = View.GONE
-                    binding.eceRV.visibility = View.VISIBLE
+                    binding.sciNoData.visibility = View.GONE
+                    binding.sciRV.visibility = View.VISIBLE
                     for (i in snapshot.children) {
                         val data = i.getValue(FacultyData::class.java)
                         if (data != null) {
                             list2.add(data)
                         }
-                        fAdapter = FacultyAdapter(list2, "Hindi",  this@UpdateFacultyActivity)
-                        binding.eceRV.apply {
+                        fAdapter = FacultyAdapter(list2, "Science",  this@UpdateFacultyActivity)
+                        binding.sciRV.apply {
                             setHasFixedSize(true)
                             layoutManager = LinearLayoutManager(this@UpdateFacultyActivity)
                             adapter = fAdapter
@@ -117,18 +117,18 @@ class UpdateFacultyActivity : AppCompatActivity() {
         dbRef.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (!snapshot.exists()) {
-                    binding.meNoData.visibility = View.VISIBLE
-                    binding.meRV.visibility = View.GONE
+                    binding.mathsNoData.visibility = View.VISIBLE
+                    binding.mathsRV.visibility = View.GONE
                 } else {
-                    binding.meNoData.visibility = View.GONE
-                    binding.meRV.visibility = View.VISIBLE
+                    binding.mathsNoData.visibility = View.GONE
+                    binding.mathsRV.visibility = View.VISIBLE
                     for (i in snapshot.children) {
                         val data = i.getValue(FacultyData::class.java)
                         if (data != null) {
                             list3.add(data)
                         }
                         fAdapter = FacultyAdapter(list3, "Maths", this@UpdateFacultyActivity)
-                        binding.meRV.apply {
+                        binding.mathsRV.apply {
                             setHasFixedSize(true)
                             layoutManager = LinearLayoutManager(this@UpdateFacultyActivity)
                             adapter = fAdapter

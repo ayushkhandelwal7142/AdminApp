@@ -33,7 +33,9 @@ class FacultyAdapter(private val list: ArrayList<FacultyData>, private val categ
         holder.email.text = list[position].email
         holder.post.text = list[position].post
         holder.phNumber.text = list[position].phNumber
-        Glide.with(context).load(list[position].url).into(holder.profilePic)
+        if (list[position].url != "") {
+            Glide.with(context).load(list[position].url).into(holder.profilePic)
+        }
 
         holder.btnUpdateInfo.setOnClickListener {
            val intent = Intent(context, UpdateTeacherActivity::class.java)
